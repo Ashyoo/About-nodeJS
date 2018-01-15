@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>中国好台词</title>
+	<link href="/css/font-awesome.css" rel="stylesheet"> 
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+	<link href="http://fonts.googleapis.com/css?family=Bad+Script" rel="stylesheet">
+	<link href="/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+	<link href="/css/style.css" type="text/css" rel="stylesheet" media="all">  
+	<link rel="stylesheet" href="/css/index.css">
+	<script src="/js/jquery-1.11.3.min.js"></script>
+	<style>
+		*{margin: 0;padding:0;list-style:none;text-decoration:none;}
+
+	</style>
+</head>
+<body>
+	<div id="warp">
+<!--头部-->
+		<div class="header">
+			<div class="header-top">
+				<h1>
+					<a href="">
+						China
+						<span>
+							 Good taici
+						</span>
+					</a>
+				</h1>
+				<ul>
+					<li><a href="/admin/articleCon"  class="active">添加台词</a></li>
+					<li><a href="/admin/articleSee">台词列表</a></li>
+					<li><a href="/admin" style="margin-left:500px;">返回后台</a></li>
+
+				</ul>
+			</div>
+		</div>
+	<img src="/images/2.jpg" alt="" style="width:1349px;height:300px;">
+		<div class="welcome contact">
+		<div class="container">  
+			<h3 class="agileits-title">Good Taici 添加台词</h3>   
+			<div class="contact-w3ls-row">
+				<form action="/admin/insertArticle" method="post" enctype="multipart/form-data">
+					<input type="text" name="taici" placeholder="台词">
+					<input type="text" name="author" placeholder="作者" style="margin-left:23px;">
+					<select class="s-addUser myinput" name="catId">
+						<!-- 接收分类的数据 并遍历 -->
+				  		<% datalist.forEach(function(val){ %>
+				  			<!-- 遍历得到分类的数据 输出到html中-->
+					  		<option value="<%= val._id %>"><%= val.fenlei %></option>
+				  		<% }) %>
+				  	</select>
+					<input type="file" name="fengmian" class="myinput">
+					<textarea name="content" placeholder="简介" required=""></textarea>
+					<input type="submit" value="SUBMIT">
+				</form>
+			</div>  
+		</div>
+	</div>
+<% include footer%>

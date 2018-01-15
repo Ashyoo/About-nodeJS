@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>中国好台词</title>
+	<link href="/css/font-awesome.css" rel="stylesheet"> 
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+	<link href="http://fonts.googleapis.com/css?family=Bad+Script" rel="stylesheet">
+	<link href="/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+	<link href="/css/style.css" type="text/css" rel="stylesheet" media="all">  
+	<link rel="stylesheet" href="/css/index.css">
+	<script src="/js/jquery-1.11.3.min.js"></script>
+	<style>
+		*{margin: 0;padding:0;list-style:none;text-decoration:none;}
+		img{width:100px;height:100px;}
+
+	</style>
+</head>
+<body>
+	<div id="warp">
+<!--头部-->
+		<div class="header">
+			<div class="header-top">
+				<h1>
+					<a href="">
+						China
+						<span>
+							 Good taici
+						</span>
+					</a>
+				</h1>
+				<ul>
+					<li><a href="/admin/categoryCon"  class="active">添加分类</a></li>
+					<li><a href="/admin/categorySee">分类列表</a></li>
+					<li><a href="/admin" style="margin-left:500px;">返回后台</a></li>
+
+				</ul>
+			</div>
+		</div>
+	<img src="/images/2.jpg" alt="" style="width:1349px;height:300px;">
+		<div class="welcome contact">
+		<div class="container">  
+			<h3 class="agileits-title">Good Taici 添加分类</h3>   
+			<div class="contact-w3ls-row">
+
+				<form action="/admin/updatedCategory" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="_id" value="<%= datalist._id%>">
+					<input type="text" name="fenlei" placeholder="分类" required="" value="<%= datalist.fenlei%>">
+					<div class="from-control">
+						<img id="pic" src="/<%= datalist.pic%>" alt="">
+						<input type="file" name="pic" class="myinput" id="file" onchange="readAsDataURL()">
+						<input type="hidden" name="pic" value="<%= datalist.pic%>">
+					</div>
+					<textarea name="info" placeholder=""><%= datalist.info%></textarea>
+					<input type="submit" value="SUBMIT">
+				</form>
+			</div>  
+		</div>
+	</div>
+
+
+	<script>
+		var fileInput = document.getElementById('file');
+		// 处理兼容性
+		if( typeof(FileReader) == 'undefined'){
+			// alert('ok');
+			fileInput.disabled = true;
+		}
+		function readAsDataURL(){
+			// console.dir(fileInput);  文件信息
+			var myfile = fileInput.files[0];
+			// 实例化对象
+			var reader = new FileReader();	
+			reader.readAsDataURL(myfile);
+			// 读取文件完成后触发
+			reader.onload = function(){
+				// console.log(this.result);
+				document.getElementById('pic').setAttribute("src",this.result);
+			}
+		}		
+	</script>
+
+<% include footer%>

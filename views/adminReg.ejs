@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>中国好台词</title>
+	<link href="/css/font-awesome.css" rel="stylesheet"> 
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+	<link href="http://fonts.googleapis.com/css?family=Bad+Script" rel="stylesheet">
+	<link href="/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+	<link href="/css/style.css" type="text/css" rel="stylesheet" media="all">  
+	<link rel="stylesheet" href="/css/index.css">
+	<script src="/js/jquery-1.11.3.min.js"></script>
+	<style>
+		*{margin: 0;padding:0;list-style:none;text-decoration:none;}
+	</style>
+</head>
+<body>
+	<div id="warp">
+
+		<div class="welcome portfolio">
+		<img src="/images/2.jpg" alt="" style="width:1349px;height:300px;">
+			<div class="container">  
+				<h3 class="agileits-title">Login</h3>  
+				<div class="gallery_gds">
+
+					<div class="filtr-container">
+						<input id="username" type="text" placeholder="账号"> <br>	
+						<input id="password1" type="password" placeholder="密码"> <br>	
+						<input id="password2" type="password" placeholder="重复密码"> <br>	
+						<button class="btn">注册</button>	
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- 页脚部分 -->
+		<!-- 清除浮动 -->
+		<div class="clearBoth"></div>
+		<div class="footer">
+			<div class="footer-one">
+				<h3>Our Services</h3>
+				<ul>
+					<li>
+						<span class="fa fa-gears icon"></span>
+						<h4 class="mission">Fugiat Quo</h4>
+						<p class="description">Sceleris Prae </p>
+					</li>
+					<li>
+						<span class="fa fa-group icon"></span>
+						<h4 class="mission">Voluptas </h4>
+						<p class="description">Scele Praesent </p>
+					</li>
+					<li>
+						<span class="fa fa-briefcase icon"></span>
+						<h4 class="mission">Quo fugiat</h4>
+						<p class="description">Scele Praesent </p>
+					</li>
+					<li>
+						<span class="fa fa-list-alt icon"></span>
+						<h4 class="mission">Voluptas</h4>
+						<p class="description">Scele Aesent </p>
+					</li>
+				</ul>
+			</div>
+			<div class="footer-two">
+				<div class="fixImg">
+					<h3>Today Special</h3>
+					<p>In malesuada accumsan felis, a imperdiet arcu blandit sed. Ut id faucibus eros. Fusce sed vulputate dui, non consectetur felis. Etiam id enim sem. Suspendisse commodo tempor magna</p>
+				</div>
+			</div>
+			<div class="footer-three">
+				<h3>Newsletter</h3>
+				<p>Mauris est odio laoreet laoreet sapien non, sollicitudin bibendum nulla amet purus sodales blandit.</p>
+				<input type="text" placeholder="Enter your Email...">
+				<input type="submit" value="Subscribe">
+			</div>
+			<div class="footer-four">
+				<div class="footer-four-cont">
+					<div class="footer-four-cont-one">
+						<h3>Holiday Spot</h3>
+						<i class="fa fa-facebook" style="margin-left:110px;"></i>
+						<i class="fa fa-twitter"></i>
+						<i class="fa fa-google-plus"></i>
+						<p>Aenean vitae metus sit amet purus sodales blandit. Nullam ut dolor eu urna viverra semper. Mauris est odio, laoreet laoreet sapien non, sollicitudin bibendum nulla.</p>
+					</div>
+					<div class="footer-four-cont-two">
+						<ul class="ul-one">
+							<li>QUICK LINKS</li>
+							<li>> Home</li>
+							<li>> About</li>
+							<li>> Tours</li>
+							<li>> Short Codes</li>
+							<li>> Contact</li>
+						</ul>
+					</div>
+					<div class="footer-four-cont-two">
+						<ul class="ul-one">
+							<li>CONTACT INFO</li>
+							<li>> 123 Broome St,2nd Block</li>
+							<li>> NY 10002, New York</li>
+							<li>> Phone: +01 111 222 3333</li>
+							<li>> mail@example.com</li>
+						</ul>
+					</div>
+					
+				</div>
+				<div class="footer-five">
+					<p>Copyright © 2017.Company name All rights reserved</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="/js/index.js"></script>
+	<script>
+		$('.btn').click(function(){
+			if ($('#password1').val() !== $('#password2').val()) {
+				alert('两次输入密码不一致,请重新输入')
+			}else{
+				$.ajax({
+					url:'/admin/insertAdmin',
+					type:'post',
+					data:{
+						adminUsername:$('#username').val(),
+						adminPassword:$('#password1').val(),
+					},
+					success:function(){
+						alert('注册成功');
+						location.href =  '/admin';
+					},
+					error:function(){
+						alert('注册失败,请联系管理员');
+						location.href = '/admin/adminReg';
+					}
+				})
+			}
+		})
+	</script>
+</body>
+</html>
